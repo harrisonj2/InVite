@@ -25,8 +25,8 @@ public class host_adapeter extends ArrayAdapter<Host>{
         View hostView = inflater.inflate(R.layout.host_row, parent, false);
 
         host = getItem(position);
-        hostIDTextView = (TextView) hostView.findViewById((R.id.hostIDTextView));
-        hostEmailTextView = (TextView) hostView.findViewById((R.id.hostEmailTextView));
+        hostIDTextView = (TextView) hostView.findViewById(R.id.hostIDTextView);
+        hostEmailTextView = (TextView) hostView.findViewById(R.id.hostEmailTextView);
 
         hostIDTextView.setText(host.getId());
         hostEmailTextView.setText(host.getEmail());
