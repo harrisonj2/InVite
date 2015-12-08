@@ -33,7 +33,8 @@ public class meeting_adapter extends ArrayAdapter<Meeting> {
         descriptionTV = (TextView) meetingView.findViewById((R.id.descriptionTV));
 
         nameTV.setText(meeting.getName());
-        hostTV.setText(meeting.getHostId());
+        Integer id = meeting.getHostId();
+        hostTV.setText(id.toString());
         locationTV.setText(meeting.getLocation());
         dateTV.setText(meeting.getDate());
         timeTV.setText(meeting.getTime());

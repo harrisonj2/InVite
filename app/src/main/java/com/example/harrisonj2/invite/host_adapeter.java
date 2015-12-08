@@ -28,7 +28,8 @@ public class host_adapeter extends ArrayAdapter<Host>{
         hostIDTextView = (TextView) hostView.findViewById(R.id.hostIDTextView);
         hostEmailTextView = (TextView) hostView.findViewById(R.id.hostEmailTextView);
 
-        hostIDTextView.setText(host.getId());
+        Integer id = host.getId();
+        hostIDTextView.setText(id.toString());
         hostEmailTextView.setText(host.getEmail());
 
         return hostView;
