@@ -1,6 +1,8 @@
 package com.example.harrisonj2.invite;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -23,6 +25,9 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String COLUMN_MEETINGLOCATION = "location";
     private static final String COLUMN_MEETINGDATE = "date";
     private static final String COLUMN_MEETINGTIME = "time";
+
+    private Host[] hostData;
+    private Meeting[] meetingData;
 
     public DBHandler(Context context, SQLiteDatabase.CursorFactory factory){
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -54,5 +59,82 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXIST " + TABLE_HOST + ";");
         db.execSQL("DROP TABLE IF EXIST " + TABLE_MEETING + ";");
         onCreate(db);
+    }
+
+    public void addHost(String email){
+        ContentValues value = new ContentValues();
+        value.put(COLUMN_HOSTEMAIL, email);
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert(TABLE_HOST, null, value);
+        db.close();
+    }
+
+    public void addMeeting(String name, String description, String location,
+                           String date, String time, int hostID){
+        ContentValues value = new ContentValues();
+        value.put(COLUMN_MEETINGNAME, name);
+        value.put(COLUMN_MEETINGDESCRIPTION, description);
+        value.put(COLUMN_MEETINGLOCATION, location);
+        value.put(COLUMN_MEETINGDATE, date);
+        value.put(COLUMN_MEETINGTIME, time);
+        value.put(COLUMN_HOSTID, hostID);
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert(TABLE_MEETING, null, value);
+        db.close();
+    }
+
+    public Host[] getHost(){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = " SELECT * FROM " + TABLE_HOST + ";";
+        Cursor c = db.rawQuery(query, null);
+        int numHost = c.getCount();
+
+        if(numHost >= 1){
+            hostData = new Host[numHost];
+
+            int i = 0;
+            c.moveToFirst();
+
+            while (!c.isAfterLast()){
+                hostData[i] = new Host(c.getString(c.getColumnIndex("email")));
+
+                c.moveToNext();
+                i++;
+            }
+        }
+
+        db.close();
+        return hostData;
+    }
+
+    public Meeting[] getMeeting(){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = " SELECT * FROM " + TABLE_MEETING + ";";
+        Cursor c = db.rawQuery(query, null);
+        int numMeeting = c.getCount();
+
+        if(numMeeting >= 1){
+            meetingData = new Meeting[numMeeting];
+
+            int i = 0;
+            c.moveToFirst();
+
+            while (!c.isAfterLast()){
+                meetingData[i] = new Meeting(c.getInt(c.getColumnIndex("host_id")),
+                        c.getString(c.getColumnIndex("name")),
+                        c.getString(c.getColumnIndex("description")),
+                        c.getString(c.getColumnIndex("location")),
+                        c.getString(c.getColumnIndex("date")),
+                        c.getString(c.getColumnIndex("time")));
+
+                c.moveToNext();
+                i++;
+            }
+        }
+
+        db.close();
+        return meetingData;
     }
 }
