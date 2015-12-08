@@ -50,13 +50,14 @@ public class AddMeeting extends AppCompatActivity {
         String loc = location.getText().toString();
         String dat = date.getText().toString();
         String tim = time.getText().toString();
-        int hos = Integer.parseInt(host.getText().toString());
+        String hos = host.getText().toString();
 
         if(nam.equals("") || des.equals("") || loc.equals("") || dat.equals("") ||
-                tim.equals("") || hos <= 0)
+                tim.equals("") || hos.equals(""))
             Toast.makeText(this, "Please enter data in each field!", Toast.LENGTH_LONG).show();
         else{
-            dbHandler.addMeeting(nam, des, loc, dat, tim, hos);
+            int ho = Integer.parseInt(hos);
+            dbHandler.addMeeting(nam, des, loc, dat, tim, ho);
             Toast.makeText(this, "Meeting added!", Toast.LENGTH_LONG).show();
         }
     }
