@@ -157,5 +157,19 @@
                 android:layout_column="1"
                 android:onClick="addMeeting" />
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Host Page"
+                android:id="@+id/addHostButton"
+                android:layout_column="0"
+                android:onClick="goToHost" />
+        </TableRow>
     </TableLayout>
 </RelativeLayout>
