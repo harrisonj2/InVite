@@ -10,7 +10,8 @@ public class Meeting {
     public Meeting() {
     }
 
-    public Meeting(int hostId, String name, String description, String location, String date, String time) {
+    public Meeting(int id, int hostId, String name, String description, String location, String date, String time) {
+        this.id = id;
         this.hostId = hostId;
         this.name = name;
         this.description = description;

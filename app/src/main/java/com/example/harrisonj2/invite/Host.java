@@ -10,8 +10,8 @@ public class Host {
     public Host(){
     }
 
-    public Host(String email){
-        this.email = email;
+    public Host(int id, String email){
+       this.id = id;this.email = email;
     }
 
     public String getEmail() {

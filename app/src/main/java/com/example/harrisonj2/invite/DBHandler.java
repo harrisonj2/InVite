@@ -98,7 +98,8 @@ public class DBHandler extends SQLiteOpenHelper {
             c.moveToFirst();
 
             while (!c.isAfterLast()){
-                hostData[i] = new Host(c.getString(c.getColumnIndex("email")));
+                hostData[i] = new Host(c.getInt(c.getColumnIndex("host_id")),
+                        c.getString(c.getColumnIndex("email")));
 
                 c.moveToNext();
                 i++;
@@ -122,7 +123,8 @@ public class DBHandler extends SQLiteOpenHelper {
             c.moveToFirst();
 
             while (!c.isAfterLast()){
-                meetingData[i] = new Meeting(c.getInt(c.getColumnIndex("host_id")),
+                meetingData[i] = new Meeting(c.getInt(c.getColumnIndex("meeting_id")),
+                        c.getInt(c.getColumnIndex("host_id")),
                         c.getString(c.getColumnIndex("name")),
                         c.getString(c.getColumnIndex("description")),
                         c.getString(c.getColumnIndex("location")),
