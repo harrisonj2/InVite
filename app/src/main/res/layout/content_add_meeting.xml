@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
+                android:text="Description : "
                 android:id="@+id/descriptionTextView"
                 android:layout_column="0" />
 
@@ -65,14 +65,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView4"
+                android:text="Location : "
+                android:id="@+id/locationTextView"
                 android:layout_column="0" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText4"
+                android:id="@+id/locationEditText"
                 android:layout_column="1" />
         </TableRow>
 
@@ -84,15 +84,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView5"
+                android:text="Date : "
+                android:id="@+id/dateTextView"
                 android:layout_column="0" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText5"
-                android:layout_column="1" />
+                android:id="@+id/dateEditText"
+                android:layout_column="1"
+                android:hint="MM/DD/YYYY" />
         </TableRow>
 
         <TableRow
@@ -103,15 +104,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView6"
+                android:text="Time :"
+                android:id="@+id/timeTextView"
                 android:layout_column="0" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText6"
-                android:layout_column="1" />
+                android:id="@+id/timeEditText"
+                android:layout_column="1"
+                android:hint="HH:MM" />
         </TableRow>
 
         <TableRow
@@ -122,14 +124,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView7"
+                android:text="Host ID : "
+                android:id="@+id/hostIDTextView"
                 android:layout_column="0" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText7"
+                android:id="@+id/hostIDEditText"
                 android:layout_column="1" />
         </TableRow>
 
@@ -141,17 +143,19 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button3"
-                android:layout_column="0" />
+                android:text="View Meetings"
+                android:id="@+id/viewMeetingButton"
+                android:layout_column="0"
+                android:onClick="viewMeeting" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button4"
-                android:layout_column="1" />
+                android:text="Add Meeting"
+                android:id="@+id/addMeetingButton"
+                android:layout_column="1"
+                android:onClick="addMeeting" />
         </TableRow>
     </TableLayout>
 </RelativeLayout>
